@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>円と接線</title>
+
+	<link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/page.css">
+
+    <!-- TikZJax -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+    <script src="markdown-show.js"></script>
+
+    <!-- MathJax -->
+    <script id="MathJax-script" async 
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$', '$'], ["\\(", "\\)"] ],
+                displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                availableFonts: ["TeX"]
+            }
+        });
+    </script>
+</head>
+<body>
+	<div id="content" class="content gothic">
+        <a href="../index.html">戻る</a>
+		<h1>最初の一問</h1>
+
+        <p class="first">
+            こんにちは。ここでは、自己紹介を兼ねて、ひとつ問題を投稿します。<br>
+            これから1週間に2つほど投稿していきますので、楽しみにしておいてください。<br>
+            記念すべき最初の一問は、方程式の文章題です。
+        </p>
+
+		<h3 class="question">
+			<span class="q-num">1</span>
+			<p class="q-body">
+                中川さんは、八百屋でリンゴを3つ買いました。<br>
+                そのリンゴ3つの重さの平均は204gで、
+                最も軽いものと最も重いものの重さの差は50gありました。<br>
+                重さが軽いものから2番目のリンゴの重さは180gです。<br>
+                リンゴの値段は重さに比例し、
+                重さが軽いものから2番目のリンゴの値段を120円とするとき、
+                次の各問いに答えなさい。
+            </p>
+		</h3>
+
+        <h4 class="m-question">
+            <span class="m-q-num">(1)</span>
+            <p class="m-q-body">
+                最も重いリンゴの重さを求めなさい。
+            </p>
+        </h4>
+
+        <h4 class="m-question">
+            <span class="m-q-num">(2)</span>
+            <p class="m-q-body">
+                リンゴ3つの合計の値段を求めなさい。
+            </p>
+        </h4>
+
+        <div class="container">
+            <button id="ansButton" class="btn" onclick="switchAnswer()">答えを見る</button>
+        </div>
+
+        <div id="answer" style="display: none;">
+            <span class="q-num">1</span>
+            <span class="q-body">
+                <div class="m-question">
+                    <span class="m-q-num">(1)</span>
+                    <span class="m-q-body">
+                        <p>241g</p>
+                        <div class="dashed">
+                            リンゴの重さを軽い順から$a, b, c$ [g]とする。<br>
+                            平均が204gだから、3つ合計で612gで、最も重いものは最も軽いものより50g重いから、次の式が成り立つ。
+                            \begin{equation}
+                                \left\{ \,
+                                    a + b + c = 612 \tag 1 \label{i} \\
+                                \right.
+                            \end{equation}
+                            
+
+                        </div>
+                    </span>
+                </div>
+            </span>
+        </div>
+
+        
+        <div class="controller">
+            <p>フォント選択</p>
+            <button class="btn" id="mincho" onclick="addClass('content', 0)">明朝体</button>
+            <button class="btn" id="gothic" onclick="addClass('content', 1)">ゴシック体</button>
+        </div>
+
+        <!-- 
+        \coordinate[label=P] (P) at ({1.5 * cos(30)}, {1.5 * sin(30)});
+				\coordinate[label=Q] (Q) at ({1.5 * cos(30) + 1}, {-(1.5 * cos(30) + 1)/tan(30) + 1.5 * sin(30) + (1.5 * sin(30))/tan(30)});
+                \draw[thick] (P) -- (Q);
+        -->
+	</div>
+
+    <script src="controller.js"></script>
+</body>
+</html>

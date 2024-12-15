@@ -1,0 +1,19 @@
+/* Reset a tag style */
+.btn {
+    text-decoration: none;
+    background: none;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    color: black;
+
+    padding: 0.5em;
+    border: solid 1px black;
+    border-radius: 0.5em;
+    background: white;
+}
+
+.btn:hover {
+    background: rgb(40, 72, 87);
+    color: whitesmoke;
+}

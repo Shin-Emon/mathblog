@@ -1,0 +1,54 @@
+.title {
+    position: relative;
+    padding: 8em;
+    background-image: url('../images/title-background.webp');
+    background-position: 30% 45%;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+.title .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sub {
+    padding: 2em;
+    margin: 1em;
+    text-align: center;
+}
+
+.main {
+    padding: 2em;
+    margin: 1em;
+}
+
+
+
+#posts {
+    list-style: none;
+}
+
+.post-ul {
+    padding: 0 0 0 1.5em;
+    border-left: solid 2px black;
+}
+
+.tag {
+    border-radius: 0.2em;
+    background: rgb(40, 72, 87);
+    color: whitesmoke;
+    padding: 0.2em 0.4em;
+    margin-right: 0.6em;
+    display: inline-block;
+}

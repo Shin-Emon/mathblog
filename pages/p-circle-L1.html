@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>円と接線</title>
+
+	<link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/page.css">
+
+    <!-- TikZJax -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+    <script src="markdown-show.js"></script>
+
+    <!-- MathJax -->
+    <script id="MathJax-script" async 
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$', '$'], ["\\(", "\\)"] ],
+                displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                availableFonts: ["TeX"]
+            }
+        });
+    </script>
+</head>
+<body>
+	<div id="content" class="content gothic">
+        <a href="../index.html">戻る</a>
+		<h1>円と接線の問題</h1>
+
+        <p class="first">
+            中学3年生までの数学で解ける問題です。<br>
+            接線の性質と三角比を使えば意外と簡単です。
+        </p>
+
+		<h3 class="question">
+			<span class="q-num">1</span>
+			<p class="q-body">
+                下図において直線$AB$は点$A$における円$O$の接線であり、
+                $OA = \sqrt{3}$, $AB = 3$である。<br>
+                また、点$P$は半直線OBと円Oの交点である。<br>
+                このとき、次の各問いに答えよ。
+            </p>
+		</h3>
+
+        <!-- x_o = 0, y_o = 0 -->
+		<div class="figure">
+            <p>図</p>
+            <script type="text/tikz">
+                \begin{tikzpicture}[scale=2]
+                    \draw[thick,name path=Circle_O] (0, 0) circle [radius=1.5];
+                    \draw[thick,domain=0:3] plot(\x, {-\x / tan(30) + 1.5 * sin(30) + 1.5 * cos(30) / tan (30)});
+    
+                    \coordinate[label=above left:\huge O] (O) at (0, 0);
+                    \coordinate[label=above right:\huge A] (A) at ({1.5 * cos(30)}, {1.5 * sin(30)});
+                    \coordinate[label=above right:\huge B] (B) at ({1.5 * cos(30) + 1}, {-(1.5 * cos(30) + 1) / tan(30) + 1.5 * sin(30) + 1.5 * cos(30) / tan(30)});
+                    \fill (O) circle [radius=0.7pt];
+                    \fill (A) circle [radius=0.7pt];
+                    \fill (B) circle [radius=0.7pt];
+
+                    \draw[thick,name path=OA] (O) -- (A);
+                    \draw[thick,name path=OB] (O) -- (B);
+
+                    \path[name intersections={of=Circle_O and OB}] node[label=below right:\huge P] at (intersection-1) {};
+                    \fill (intersection-1) circle [radius=0.7pt];
+    
+                \end{tikzpicture}
+            </script>
+        </div>
+
+        <h4 class="m-question">
+            <span class="m-q-num">(1)</span>
+            <p class="m-q-body">
+                $\stackrel{\Large\mbox{$\frown$} } {AP}$の面積を求めなさい。
+            </p>
+        </h4>
+
+        <h4 class="m-question">
+            <span class="m-q-num">(2)</span>
+            <p class="m-q-body">
+                $OB$の長さを求めなさい。
+            </p>
+        </h4>
+
+        <h4 class="m-question">
+            <span class="m-q-num">(3)</span>
+            <p class="m-q-body">
+                $\angle ABO$の大きさを求めなさい。
+            </p>
+        </h4>
+
+        <div class="container">
+            <button id="ansButton" class="btn" onclick="showAnswer()">答えを見る</button>
+        </div>
+
+        <div id="answer" style="display: none;">
+            <h3 class="question">
+                <span class="q-num">1</span>
+                <span class="q-body">
+                    hi
+                </span>
+            </h3>
+        </div>
+        
+        <div class="controller">
+            <p>フォント選択</p>
+            <button class="btn" id="mincho" onclick="addClass('content', 0)">明朝体</button>
+            <button class="btn" id="gothic" onclick="addClass('content', 1)">ゴシック体</button>
+        </div>
+
+        <!-- 
+        \coordinate[label=P] (P) at ({1.5 * cos(30)}, {1.5 * sin(30)});
+				\coordinate[label=Q] (Q) at ({1.5 * cos(30) + 1}, {-(1.5 * cos(30) + 1)/tan(30) + 1.5 * sin(30) + (1.5 * sin(30))/tan(30)});
+                \draw[thick] (P) -- (Q);
+        -->
+	</div>
+
+    <script src="controller.js"></script>
+</body>
+</html>
